@@ -65,6 +65,8 @@ async function run() {
     return;
   }
 
+
+  
   let authorLogin = pullRequest?.user?.login;
   if (!authorLogin) {
     core.warning(
