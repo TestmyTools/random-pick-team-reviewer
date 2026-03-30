@@ -7,10 +7,10 @@
     }
   },
   "repository": {
-    "name": "random-team-reviewer",
+    "name": "random-pick-team-reviewer",
     "owner": {
-      "login": "YOUR_ORG_OR_USER"
+      "login": "itsReema130"
     },
-    "full_name": "YOUR_ORG_OR_USER/random-team-reviewer"
+    "full_name": "itsReema130/random-pick-team-reviewer"
   }
 }
