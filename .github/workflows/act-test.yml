@@ -18,7 +18,7 @@ jobs:
         if: ${{ env.ACT_LOCAL == 'true' }}
         with:
           node-version: '20'
-          cache: npm
+          # Avoid npm lockfile path assumptions while running under `act`.
       - if: ${{ env.ACT_LOCAL == 'true' }}
         run: npm ci
       - if: ${{ env.ACT_LOCAL == 'true' }}
