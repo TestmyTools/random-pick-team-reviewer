@@ -124,6 +124,14 @@ async function run() {
     .filter((login) => (authorLogin ? login !== authorLogin : true));
 
   if (logins.length === 0) {
+    const memberLogins = members.map((m) => m.login);
+    core.info(
+      `Team members found: ${memberLogins.length}. PR author login: ${
+        authorLogin || '(unknown)'
+      }. PR author present in team: ${
+        authorLogin ? memberLogins.includes(authorLogin) : false
+      }.`
+    );
     core.setFailed(
       'No eligible team members: team is empty, or the only member is the PR author.'
     );
