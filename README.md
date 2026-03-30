@@ -61,7 +61,7 @@ Exact required permissions depend on whether you provide `secrets.GITHUB_TOKEN` 
 
 ## Local testing with `act` (optional)
 
-This repo includes an `act` workflow at `.github/workflows/act-test.yml` and example files under `act/`.
+This repo includes an `act` workflow at `act/act-test.yml` and example files under `act/`.
 
 You will need:
 
