@@ -1,0 +1,32 @@
+# Local act: npm run act passes ACT_LOCAL=true. On GitHub this env is unset — first step no-ops the job.
+# Requires: Docker, act CLI, act/.secrets (see act/.secrets.example)
+name: Act test (local)
+
+on:
+  pull_request:
+
+jobs:
+  random-reviewer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip on GitHub (act-only workflow)
+        if: ${{ env.ACT_LOCAL != 'true' }}
+        run: echo 'Skipping — run via npm run act with ACT_LOCAL=true'; exit 0
+      - uses: actions/checkout@v4
+        if: ${{ env.ACT_LOCAL == 'true' }}
+      - uses: actions/setup-node@v4
+        if: ${{ env.ACT_LOCAL == 'true' }}
+        with:
+          node-version: '20'
+          cache: npm
+      - if: ${{ env.ACT_LOCAL == 'true' }}
+        run: npm ci
+      - if: ${{ env.ACT_LOCAL == 'true' }}
+        run: npm run build
+      - name: Random team reviewer (local action)
+        if: ${{ env.ACT_LOCAL == 'true' }}
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          org: ${{ secrets.ACT_ORG }}
+          team-slug: ${{ secrets.ACT_TEAM_SLUG }}

@@ -1,0 +1,16 @@
+{
+  "action": "opened",
+  "pull_request": {
+    "number": 1,
+    "user": {
+      "login": "octocat"
+    }
+  },
+  "repository": {
+    "name": "random-team-reviewer",
+    "owner": {
+      "login": "YOUR_ORG_OR_USER"
+    },
+    "full_name": "YOUR_ORG_OR_USER/random-team-reviewer"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "random-team-reviewer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub Action: random reviewer from a team",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --license licenses.txt",
+    "all": "npm run build",
+    "act": "act pull_request -j random-reviewer -W .github/workflows/act-test.yml -e act/pull_request.json --secret-file act/.secrets --env ACT_LOCAL=true -P ubuntu-latest=catthehacker/ubuntu:act-22.04",
+    "act:arm64": "act pull_request -j random-reviewer -W .github/workflows/act-test.yml -e act/pull_request.json --secret-file act/.secrets --env ACT_LOCAL=true -P ubuntu-latest=catthehacker/ubuntu:act-22.04 --container-architecture linux/amd64"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.3"
+  }
+}

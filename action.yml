@@ -1,0 +1,22 @@
+name: 'Random Team Reviewer'
+description: 'Randomly selects one reviewer from a GitHub team and requests review on a pull request'
+author: 'Reema Alhammadi'
+inputs:
+  github-token:
+    description: 'GitHub token with permission to read team members and request reviewers'
+    required: true
+  org:
+    description: 'GitHub organization name'
+    required: true
+  team-slug:
+    description: 'GitHub team slug'
+    required: true
+outputs:
+  reviewer:
+    description: 'The selected reviewer login'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+branding:
+  icon: 'users'
+  color: 'blue'
